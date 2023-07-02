@@ -47,6 +47,7 @@ pipeline {
           steps {
             sh '''./mvnw verify
 '''
+            junit ' **/target/surefire-reports/TEST-*.xml'
           }
         }
 
