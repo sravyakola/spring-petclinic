@@ -22,5 +22,11 @@ pipeline {
       }
     }
 
+    stage('Unit test') {
+      steps {
+        sh './mvnw "-Dtest=**/petclinic/*/*.java" test'
+      }
+    }
+
   }
 }
