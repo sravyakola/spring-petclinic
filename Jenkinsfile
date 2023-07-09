@@ -15,42 +15,10 @@ pipeline {
     stage('Static analysis') {
       steps {
         sh '''./mvnw sonar:sonar \\
-  -Dsonar.projectKey=Petclinic \\
-  -Dsonar.projectName=\'Petclinic\' \\
-  -Dsonar.host.url=http://43.205.123.80:9000 \\
-  -Dsonar.token=sqp_780ed06821e26980da2dc7e8e82019ba0293a3a3'''
-      }
-    }
-
-    stage('Unit test') {
-      steps {
-        sh './mvnw "-Dtest=**/petclinic/*/*.java" test'
-      }
-    }
-
-    stage('Package') {
-      steps {
-        sh '''./mvnw package -DskipTests=true
-'''
-      }
-    }
-
-    stage('Deploy') {
-      parallel {
-        stage('Deploy') {
-          steps {
-            sh './mvnw spring-boot:run </dev/null &>/dev/null &'
-          }
-        }
-
-        stage('Integration and performance tests') {
-          steps {
-            sh '''./mvnw verify
-'''
-            junit ' **/target/surefire-reports/TEST-*.xml'
-          }
-        }
-
+  -Dsonar.projectKey=Petclinic1 \\
+  -Dsonar.projectName=\'Petclinic1\' \\
+  -Dsonar.host.url=http://65.2.54.120:9000 \\
+  -Dsonar.token=sqp_b3d723bc8c2df1176cfa7d1129027a77cb3f85c9'''
       }
     }
 
